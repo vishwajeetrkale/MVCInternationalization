@@ -5,12 +5,13 @@
 }
 @helper selected(string c, string culture)
 {
-if (c == culture)
-{
+    if (String.Equals(c, culture, StringComparison.OrdinalIgnoreCase))
+    {
         @:checked="checked"
     }
 }
 <h2>@Resources.AddPerson</h2>
+
 @using (Html.BeginForm("SetCulture", "Home"))
 {
     <fieldset>
@@ -36,12 +37,17 @@ if (c == culture)
                 </label>
             </div>
         </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="mr-IN">
+                    <input name="culture" id="mr-In" value="mr-In" type="radio" @selected("mr-In", culture) /> मराठी
+                </label>
+            </div>
+        </div>
 
     </fieldset>
-
-
-
 }
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -91,6 +97,7 @@ if (c == culture)
         </div>
     </div>
 }
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">

@@ -35,6 +35,6 @@ namespace MvcInternationalization.Controllers
             Response.Cookies.Add(cookie);
             return RedirectToAction("Index");
         }
-
+        
     }
 }
